@@ -1,0 +1,28 @@
+int removeDuplicates(int* nums, int numsSize){
+    int mark;
+    for(int i=0;i<numsSize;i++){
+        if(nums[i]=='!'){
+            mark=i-1;
+            break;
+        }
+    }
+    for(int i=0;i<numsSize;i++){
+        for(int j=i+1;j<numsSize;j++){
+            if(nums[i]==nums[j]){
+                nums[j]='!';
+            }
+        }
+    }
+    int t=0;
+    for(int i=0;i<numsSize;i++){
+        if(nums[i]!='!'){
+            nums[t]=nums[i];
+            t++;
+        }
+        else if(nums[i]=='!' && mark==i-1){
+            nums[t]=nums[i];
+            t++;
+        }
+    }
+    return t; 
+}
